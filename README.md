@@ -2,21 +2,23 @@
 
 https://github.com/averi/python-scripts/blob/master/check-domain-expiration.py
 
+<br>
+#### 메일 정보 파일 생성
 
-메일 정보 파일 생성
 vim .mail_header
----
+
+```
 From: mail1234@mailserver.com
 To: mail1234@mailserver.com
 Subject: 도메인 만료일 안내
 Content-Type: text/html
----
+```
+<br>
+#### 도메인 리스트 파일 생성
 
-
-도메인 리스트 파일 생성
 vim domain_list.txt
----
+
+```
 abc.com
 google.com
----
-
+```
