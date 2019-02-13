@@ -26,6 +26,7 @@ google.com
 
 <br>
 #### 크론탭 설정
+
 crontab -e
 
 ```
