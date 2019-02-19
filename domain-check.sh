@@ -1,13 +1,9 @@
 #!/bin/bash
 
 domainchk(){
-	echo "---------------------------------------------------------------------"
-	printf "| %10s | %20s | %-13s | %-10s |\n" "Condition" "Domain" "Expire (days)"  "Expire (date)"
-	echo "====================================================================="
 	while read DOMAIN_LIST
 		do
 		./check-domain-expiration.py $DOMAIN_LIST
-		echo "---------------------------------------------------------------------"
 	done < domain_list.txt
 }
 
@@ -15,18 +11,49 @@ domainchk(){
 #domainchk
 
 ### html
-echo "<html>" > result.html
-echo "<head>" > result.html
-echo "<meta http-equiv="Content-Type" content="text/html\; charset=utf-8" />" > result.html
-echo "</head>" > result.html
-echo "<body>" >> result.html
-echo "<pre>" >> result.html
-echo "<font face="Monaco">" >> result.html
+cat <<EOF > result.html
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html\; charset=utf-8" />
+</head>
+<body>
+<style>
+  table {
+    width: 80%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+    font-family: Monaco;
+    font-size:90%;
+  }
+  th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+    text-align: center;
+  }
+  th {
+    background-color: #e3f2fd;
+  }
+  td {
+    background-color: #FFFFFF;
+  }
+</style>
+<font face="Monaco">
+<table border="1px">
+        <thead>
+                <tr><th>Condition</th><th>Domain</th><th>Expired Days</th><th>Expiration Date</th></tr>
+        </thead>
+        <tbody>
+EOF
+
 domainchk >> result.html
-echo "</font>" >> result.html
-echo "</pre>" >> result.html
-echo "</body>" >> result.html
-echo "</html>" >> result.html
+
+cat <<EOF >> result.html
+        </tbody>
+</table>
+</font>
+</body>
+</html>
+EOF
 
 ### mail sender
 cat .mail_header result.html | sendmail -t

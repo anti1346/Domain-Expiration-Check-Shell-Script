@@ -24,16 +24,18 @@ if type(w.expiration_date) == list:
 else:
     w.expiration_date = w.expiration_date
 
-domain_expiration_date = str(w.expiration_date.day) + '/' + str(w.expiration_date.month) + '/' + str(w.expiration_date.year)
+domain_expiration_date = str(w.expiration_date.year) + '-' + str(w.expiration_date.month) + '-' + str(w.expiration_date.day)
 
 timedelta = w.expiration_date - now
 days_to_expire = timedelta.days
 
-if timedelta.days <= 60 and timedelta.days > 30:
-    condition = "INFORMATION"
+if timedelta.days <= 90 and timedelta.days > 30:
+    print '<tr><td>Must update 30 to 90 days ago</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (domain, days_to_expire, domain_expiration_date)
+    exit(1)
 elif timedelta.days <= 30:
-    condition = "WARNING"
+    print '<tr><td>Must update 30 days ago</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (domain, days_to_expire, domain_expiration_date)
+    exit(2)
 else:
-    condition = "OK"
+    print '<tr><td>OK</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (domain, days_to_expire, domain_expiration_date)
+    exit(0)
 
-print '| %10s | %20s | %13s | %13s |' % (condition, domain, days_to_expire, domain_expiration_date)
