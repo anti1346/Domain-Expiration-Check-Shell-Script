@@ -15,8 +15,6 @@ cat <<EOF > result.html
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html\; charset=utf-8" />
-</head>
-<body>
 <style>
   table {
     width: 80%;
@@ -37,6 +35,8 @@ cat <<EOF > result.html
     background-color: #FFFFFF;
   }
 </style>
+</head>
+<body>
 <font face="Monaco">
 <table border="1px">
         <thead>
