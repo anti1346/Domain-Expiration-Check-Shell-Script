@@ -1,5 +1,8 @@
 #!/bin/bash
 
+_execute_directory='/app/script/Domain-Expiration-Check-Shell-Script'
+cd $_execute_directory
+
 domainchk(){
 	while read DOMAIN_LIST
 		do
@@ -56,4 +59,8 @@ cat <<EOF >> result.html
 EOF
 
 ### mail sender
-cat .mail_header result.html | sendmail -t
+_Day=`date +%a`
+
+if [ "$_Day" = "Mon" ] ; then
+	cat .mail_header result.html | sudo sendmail -t
+fi
