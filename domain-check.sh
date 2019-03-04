@@ -59,8 +59,4 @@ cat <<EOF >> result.html
 EOF
 
 ### mail sender
-_Day=`date +%a`
-
-if [ "$_Day" = "Mon" ] ; then
-	cat .mail_header result.html | sudo sendmail -t
-fi
+cat .mail_header result.html | sudo sendmail -t
