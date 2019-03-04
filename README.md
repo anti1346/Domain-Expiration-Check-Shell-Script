@@ -3,6 +3,17 @@
 https://github.com/averi/python-scripts/blob/master/check-domain-expiration.py
 
 <br>
+#### required package
+
+
+```
+yum install python-pip
+pip install python-whois
+pip install --upgrade pip
+```
+
+
+<br>
 #### 메일 정보 파일 생성
 
 vim .mail_header
