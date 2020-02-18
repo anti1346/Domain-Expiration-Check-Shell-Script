@@ -41,6 +41,6 @@ google.com
 crontab -e
 
 ```
-### domain check
+### domain check(Centos)
 00 10 1-7 * *   [ "`date '+\%a'`" == Mon ] && /bin/bash /app/script/Domain-Expiration-Check-Shell-Script/domain-check.sh > /dev/null 2>&1
 ```
