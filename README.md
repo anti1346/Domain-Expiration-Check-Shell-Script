@@ -43,4 +43,7 @@ crontab -e
 ```
 ### domain check(Centos)
 00 10 1-7 * *   [ "`date '+\%a'`" == Mon ] && /bin/bash /app/script/Domain-Expiration-Check-Shell-Script/domain-check.sh > /dev/null 2>&1
+
+### domain check(Ubuntu)
+00 10 1-7 * *   [ "$(date '+\%a')" = "Mon" ] && /bin/bash /app/script/Domain-Expiration-Check-Shell-Script/domain-check.sh > /dev/null 2>&1
 ```
